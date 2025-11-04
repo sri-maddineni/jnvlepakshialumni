@@ -19,8 +19,9 @@ export default function RegisterPage() {
         try {
             await registerWithEmail(email, password);
             router.push("/");
-        } catch (err: any) {
-            setError(err?.message ?? "Registration failed");
+        } catch (err: unknown) {
+            const message = err instanceof Error ? err.message : "Registration failed";
+            setError(message);
         } finally {
             setLoading(false);
         }
@@ -32,8 +33,9 @@ export default function RegisterPage() {
         try {
             await signInWithGoogle();
             router.push("/");
-        } catch (err: any) {
-            setError(err?.message ?? "Google sign-in failed");
+        } catch (err: unknown) {
+            const message = err instanceof Error ? err.message : "Google sign-in failed";
+            setError(message);
         } finally {
             setLoading(false);
         }
