@@ -8,7 +8,8 @@ import {
     createUserWithEmailAndPassword,
     signOut,
     signInWithPopup,
-    User
+    User,
+    sendPasswordResetEmail
 } from "firebase/auth";
 
 type AuthContextValue = {
@@ -18,6 +19,7 @@ type AuthContextValue = {
     registerWithEmail: (email: string, password: string) => Promise<void>;
     signInWithGoogle: () => Promise<void>;
     signOutUser: () => Promise<void>;
+    resetPassword: (email: string) => Promise<void>;
 };
 
 const AuthContext = createContext<AuthContextValue | undefined>(undefined);
@@ -50,8 +52,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         await signOut(auth);
     };
 
+    const resetPassword = async (email: string) => {
+        await sendPasswordResetEmail(auth, email);
+    };
+
     const value = useMemo(
-        () => ({ user, loading, signInWithEmail, registerWithEmail, signInWithGoogle, signOutUser }),
+        () => ({ user, loading, signInWithEmail, registerWithEmail, signInWithGoogle, signOutUser, resetPassword }),
         [user, loading]
     );
 
