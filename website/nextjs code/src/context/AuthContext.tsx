@@ -11,9 +11,11 @@ import {
     User,
     sendPasswordResetEmail
 } from "firebase/auth";
+// import { Roles } from "@/app/database/Enums";
 
 type AuthContextValue = {
     user: User | null;
+    // userRole: Roles.Admin | Roles.Alumni | Roles.Governing_body | Roles.Teacher | Roles.User | null;
     loading: boolean;
     signInWithEmail: (email: string, password: string) => Promise<void>;
     registerWithEmail: (email: string, password: string) => Promise<void>;
