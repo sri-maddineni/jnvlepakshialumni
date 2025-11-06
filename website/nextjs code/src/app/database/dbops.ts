@@ -52,4 +52,18 @@ export async function createAlumni(record: Omit<AlumniRecord, "createdAt">, id: 
     return id;
 }
 
+// export async function getAllAlumni() {
+//     const q = query(collection(db, ALL_ALUMNI));
+//     const snap = await getDocs(q);
+//     return snap.docs.map((doc) => ({ id: doc.id, ...doc.data() })) as unknown as AlumniRecord & { id: string }[];
+// }
 
+export async function getAllAlumni() {
+    const q = query(collection(db, ALL_ALUMNI));
+    const snap = await getDocs(q);
+  
+    return snap.docs.map(
+      (doc) => ({ id: doc.id, ...doc.data() } as AlumniRecord & { id: string })
+    );
+  }
+  
