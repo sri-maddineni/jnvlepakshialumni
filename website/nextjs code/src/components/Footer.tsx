@@ -5,7 +5,7 @@ export default function Footer() {
         <footer className="w-full border-t border-neutral-200 bg-white">
             <div className="mx-auto max-w-6xl px-4 sm:px-6 py-8 grid gap-6 sm:grid-cols-4">
                 <div>
-                    <p className="text-base font-semibold"><span className="text-[#FF9933]">Alumni Association</span> <span className="text-[#138808]">JNV Lepakshi</span></p>
+                    <p className="text-base font-semibold"><span className="text-[#FF9933]">Alumni Association</span> <br /> <span className="text-[#138808]">JNV Lepakshi</span></p>
                     <p className="text-sm text-neutral-800 mt-1">Enter to Learn • Leave to Serve</p>
                 </div>
                 <div className="text-sm">
