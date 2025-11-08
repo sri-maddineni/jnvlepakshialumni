@@ -1,9 +1,7 @@
 export enum AlumniStatus {
     Pending = "pending",
     Approved = "approved",
-    Alumni = "alumni",
     Rejected = "rejected",
-    
 }
 
 export enum Roles {

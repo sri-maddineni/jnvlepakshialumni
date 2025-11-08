@@ -30,6 +30,7 @@ export default function RegisterPage() {
     const [currentState, setCurrentState] = useState("");
     const [workCity, setWorkCity] = useState("");
     const [workState, setWorkState] = useState("");
+    const [workRole, setWorkRole] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState<string | null>(null);
     const [info, setInfo] = useState<string | null>(null);
@@ -75,6 +76,7 @@ export default function RegisterPage() {
                 currentState,
                 workCity: workCity || undefined,
                 workState: workState || undefined,
+                workRole: workRole || undefined,
                 status: AlumniStatus.Pending,
                 supportedBy: [],
                 approvedBy: undefined,
@@ -190,6 +192,10 @@ export default function RegisterPage() {
                         <label className="block text-sm font-medium mb-1">Organisation working name</label>
                         <input value={organisationName} onChange={(e) => setOrganisationName(e.target.value)} className="w-full rounded-md border border-neutral-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#FF9933]" />
                     </div>
+                    <div>
+                        <label className="block text-sm font-medium mb-1">Work role / Job title (optional)</label>
+                        <input value={workRole} onChange={(e) => setWorkRole(e.target.value)} placeholder="e.g., Associate Software Engineer" className="w-full rounded-md border border-neutral-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#FF9933]" />
+                    </div>
                     <div className="flex justify-between">
                         <button onClick={() => setStep(1)} className="rounded-md border border-neutral-300 px-4 py-2">Back</button>
                         <button onClick={() => setStep(3)} className="rounded-md bg-[#138808] text-white px-4 py-2">Next</button>
@@ -219,6 +225,7 @@ export default function RegisterPage() {
                             <input value={workState} onChange={(e) => setWorkState(e.target.value)} className="w-full rounded-md border border-neutral-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#FF9933]" />
                         </div>
                     </div>
+
                     <div className="flex justify-between">
                         <button onClick={() => setStep(2)} className="rounded-md border border-neutral-300 px-4 py-2">Back</button>
                         <button onClick={() => setStep(4)} className="rounded-md bg-[#138808] text-white px-4 py-2">Next</button>

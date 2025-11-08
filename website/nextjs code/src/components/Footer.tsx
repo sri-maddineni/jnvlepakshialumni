@@ -48,7 +48,7 @@ export default function Footer() {
             <div className="border-t border-neutral-200">
                 <div className="mx-auto max-w-6xl px-4 sm:px-6 py-4 text-xs text-neutral-600 flex flex-col sm:flex-row items-center justify-between gap-2">
                     <span>© {new Date().getFullYear()} AAJNVL. All rights reserved.</span>
-                    <span>Built with Next.js + Tailwind CSS</span>
+                    <span>Designed and developed by SRIHARI MADDINENI, JNV Ongole, +91 63042 14514.</span>
                 </div>
                 <div className="h-1 w-full" style={{ background: "linear-gradient(90deg,#FF9933 0%,#FF9933 33.33%,#FFFFFF 33.33%,#FFFFFF 66.66%,#138808 66.66%,#138808 100%)" }} />
             </div>

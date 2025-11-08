@@ -11,11 +11,16 @@ import {
     User,
     sendPasswordResetEmail
 } from "firebase/auth";
-// import { Roles } from "@/app/database/Enums";
+import { Roles } from "@/app/database/Enums";
+import { getAlumniByUid, AlumniRecord } from "@/app/database/dbops";
+// import { AlumniStatus } from "@/app/database/Enums";
+
+type UserRole = Roles | null;
 
 type AuthContextValue = {
     user: User | null;
-    // userRole: Roles.Admin | Roles.Alumni | Roles.Governing_body | Roles.Teacher | Roles.User | null;
+    userRole: UserRole;
+    alumniData: (AlumniRecord & { id: string }) | null;
     loading: boolean;
     signInWithEmail: (email: string, password: string) => Promise<void>;
     registerWithEmail: (email: string, password: string) => Promise<void>;
@@ -28,11 +33,37 @@ const AuthContext = createContext<AuthContextValue | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
     const [user, setUser] = useState<User | null>(null);
+    const [userRole, setUserRole] = useState<UserRole>(null);
+    const [alumniData, setAlumniData] = useState<(AlumniRecord & { id: string }) | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+        const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
             setUser(firebaseUser);
+            if (firebaseUser) {
+                try {
+                    // Fetch alumni record to get role and status
+                    const alumni = await getAlumniByUid(firebaseUser.uid);
+                    if (alumni) {
+                        setAlumniData(alumni);
+                        // Determine user role based on alumni record
+                        // Use userRole field if exists, otherwise default to User
+                        // The normalizeAlumniData function in dbops.ts will map role: "admin" to userRole: Roles.Admin
+                        setUserRole(alumni.userRole || Roles.User);
+
+                    } else {
+                        setAlumniData(null);
+                        setUserRole(null);
+                    }
+                } catch (error) {
+                    console.error("Error fetching user role:", error);
+                    setAlumniData(null);
+                    setUserRole(null);
+                }
+            } else {
+                setAlumniData(null);
+                setUserRole(null);
+            }
             setLoading(false);
         });
         return () => unsubscribe();
@@ -59,8 +90,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     };
 
     const value = useMemo(
-        () => ({ user, loading, signInWithEmail, registerWithEmail, signInWithGoogle, signOutUser, resetPassword }),
-        [user, loading]
+        () => ({ user, userRole, alumniData, loading, signInWithEmail, registerWithEmail, signInWithGoogle, signOutUser, resetPassword }),
+        [user, userRole, alumniData, loading]
     );
 
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

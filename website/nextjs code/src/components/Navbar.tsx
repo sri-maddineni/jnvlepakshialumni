@@ -57,9 +57,12 @@ export default function Navbar() {
                             </>
                         )}
                         {user && (
-                            <li>
-                                <button onClick={signOutUser} className="rounded bg-[#138808] text-white px-3 py-1.5 hover:opacity-90">Sign out</button>
-                            </li>
+                            <>
+                                <li><Link className="hover:text-[#FF9933]" href="/profile">Profile</Link></li>
+                                <li>
+                                    <button onClick={signOutUser} className="rounded bg-[#138808] text-white px-3 py-1.5 hover:opacity-90">Sign out</button>
+                                </li>
+                            </>
                         )}
                     </ul>
 
@@ -80,9 +83,12 @@ export default function Navbar() {
                             </>
                         )}
                         {user && (
-                            <li>
-                                <button onClick={() => { setOpen(false); void signOutUser(); }} className="rounded bg-[#138808] text-white px-3 py-1.5">Sign out</button>
-                            </li>
+                            <>
+                                <li><Link className="text-neutral-800" href="/profile" onClick={() => setOpen(false)}>Profile</Link></li>
+                                <li>
+                                    <button onClick={() => { setOpen(false); void signOutUser(); }} className="rounded bg-[#138808] text-white px-3 py-1.5">Sign out</button>
+                                </li>
+                            </>
                         )}
                     </ul>
                 </div>
