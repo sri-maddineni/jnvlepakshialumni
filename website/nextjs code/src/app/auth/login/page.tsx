@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -13,21 +13,42 @@ import { db } from "@/app/database/firebaseconfig";
 import { ALL_ALUMNI } from "@/app/database/paths";
 
 export default function LoginPage() {
-  const { signInWithEmail, signInWithGoogle, resetPassword, signOutUser } = useAuth();
+  const { user, loading, signInWithEmail, signInWithGoogle, resetPassword, signOutUser } = useAuth();
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [info, setInfo] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [resetting, setResetting] = useState(false);
+
+  // Redirect if already logged in
+  useEffect(() => {
+    if (!loading && user) {
+      router.push("/");
+    }
+  }, [user, loading, router]);
+
+  // Show loading state while checking auth
+  if (loading) {
+    return (
+      <div className="mx-auto max-w-md px-4 sm:px-6 py-10">
+        <div className="text-center">Loading...</div>
+      </div>
+    );
+  }
+
+  // Don't render login form if user is logged in
+  if (user) {
+    return null;
+  }
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
     setInfo(null);
-    setLoading(true);
+    setIsSubmitting(true);
     try {
       if (auth.currentUser && auth.currentUser.email && auth.currentUser.email !== email) {
         await signOutUser();
@@ -38,7 +59,7 @@ export default function LoginPage() {
       const message = err instanceof Error ? err.message : "Login failed";
       setError(message);
     } finally {
-      setLoading(false);
+      setIsSubmitting(false);
     }
   };
 
@@ -47,7 +68,7 @@ export default function LoginPage() {
   const onGoogle = async () => {
     setError(null);
     setInfo(null);
-    setLoading(true);
+    setIsSubmitting(true);
 
     try {
       await signInWithGoogle();
@@ -96,7 +117,7 @@ export default function LoginPage() {
         setError(message);
       }
     } finally {
-      setLoading(false);
+      setIsSubmitting(false);
     }
   };
 
@@ -155,10 +176,10 @@ export default function LoginPage() {
         </div>
         {error && <p className="text-sm text-red-600">{error}</p>}
         {info && <p className="text-sm text-green-700">{info}</p>}
-        <button disabled={loading} className="w-full rounded-md bg-[#138808] text-white py-2 font-medium disabled:opacity-60 hover:opacity-90">{loading ? "Signing in..." : "Sign in"}</button>
+        <button disabled={isSubmitting} className="w-full rounded-md bg-[#138808] text-white py-2 font-medium disabled:opacity-60 hover:opacity-90">{isSubmitting ? "Signing in..." : "Sign in"}</button>
       </form>
       <div className="my-4 text-center text-sm text-neutral-500">or</div>
-      <button onClick={onGoogle} disabled={loading} className="w-full rounded-md border border-[#FF9933] py-2 font-medium disabled:opacity-60 hover:bg-[#FF9933]/10">Continue with Google</button>
+      <button onClick={onGoogle} disabled={isSubmitting} className="w-full rounded-md border border-[#FF9933] py-2 font-medium disabled:opacity-60 hover:bg-[#FF9933]/10">Continue with Google</button>
     </div>
   );
 }

@@ -3,9 +3,25 @@ make it a littl brihter
 borders in about page for cards are not clear
 samel ike governing body make anothe advisory body with members 
 
-Name :  N V Ramana Reddy 
-Batch : 1987-1994
-Profession : Labour Officer (Govt of AP)
-Contact Number : 99664 04404
-Mail Id : nvenkataramanareddy@gmail.com
 
+For registraiton payment flow implementation
+--------------------------------------------------
+in the registration flow, i want to add another section as "donation" 
+user will be given a radio buttons, i can pay 5000/-, i can pay more tahn 500, i cant pay
+on clicking on i can pay 500, set amount to 500,  else if more than 500, give a text box for amount entry, 
+for i cant pay, complete registration directly
+also add a clause like, donations with donor names willl be displayed in website
+
+@todo.txt (5-14) ask if any doubts
+account number will be displayed after user clikcs on i can pay 
+also a textbox for transaction id and details 
+phoen number and details of traseurer are also displayed
+the final sumbit button shouwld be - complete registration
+if i cant pay the button to be enabled as complete registration 
+else if i can pay
+show qr, account nuber 
+account number dadn details are 
+020210100172155
+ifsc code UBIN0802026
+HINDUPUR MAIN BAZAR BRANCH, ANANTHAPUR, 525201
+ ask if any doubts

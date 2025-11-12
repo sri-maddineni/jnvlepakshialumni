@@ -49,6 +49,9 @@ export type AlumniRecord = {
     status: AlumniStatus;
     supportedBy: string[]; // array of alumni uids or identifiers
     approvedBy?: string;   // governing body member uid or identifier
+    donationAmount?: number; // Donation amount in rupees
+    transactionId?: string; // Payment transaction ID
+    donationDetails?: string; // Additional donation details/notes
     createdAt: Timestamp;
 };
 

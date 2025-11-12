@@ -57,6 +57,55 @@ export default function AboutPage() {
                     ))}
                 </div>
             </section>
+
+
+            <section className="mt-10">
+                <h2 className="text-xl sm:text-2xl font-bold mb-6 text-[#FF9933] text-center">Advisory Body</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {adv_members.map((m) => (
+                        <div key={m.name + m.role} className="rounded-2xl border border-neutral-200 bg-white p-6 h-full flex flex-col">
+                            <div className="flex flex-col items-center text-center min-h-[160px]">
+                                <div className="relative h-28 w-28 rounded-full overflow-hidden bg-neutral-200 flex items-center justify-center shadow-md">
+                                    {m.image ? (
+                                        <Image
+                                            src={m.image}
+                                            alt=""
+                                            fill
+                                            className="object-cover"
+                                        />
+                                    ) : (
+                                        <span className="text-neutral-700 font-semibold text-lg">{getInitials(m.name)}</span>
+                                    )}
+                                </div>
+                                <h3 className="mt-3 text-lg font-semibold text-neutral-900 leading-tight">{m.name}</h3>
+                                {m.role && (
+                                    <span className="mt-1 rounded-full bg-[#138808]/10 text-[#138808] px-2 py-1 text-xs font-semibold">
+                                        {m.role}
+                                    </span>
+                                )}
+                            </div>
+
+                            <div className="mt-4 space-y-2 text-sm flex-1 text-center">
+                                {m.batch && (
+                                    <div className="text-center gap-2 font-medium text-neutral-800">
+                                        {/* <span className="text-neutral-500">Batch</span> */}
+                                        {m.batch}
+                                    </div>
+                                )}
+                                {m.profession && (
+                                    <div className="items-center text-center gap-3 font-medium text-neutral-800">
+                                        {/* <span className="text-neutral-500">Profession</span> */}
+                                        {m.profession}
+                                    </div>
+                                )}
+                                {m.extra && <p className="text-neutral-700">{m.extra}</p>}
+                            </div>
+
+                            {/* No action buttons as requested */}
+                        </div>
+                    ))}
+                </div>
+            </section>
         </div>
     );
 }
@@ -187,3 +236,31 @@ function getInitials(name: string) {
 
 
 
+
+const adv_members: Member[] = [
+    // {
+    //     name: "N V Ramana Reddy",
+    //     batch: "1987-1994",
+    //     profession: "Labour Officer (Govt of AP)",
+    //     contact: "99664 04404",
+    //     email: "nvenkataramanareddy@gmail.com"
+    // },
+    {
+        name: "N V Ramana Reddy",
+        batch: "1987-1994",
+        profession: "Labour Officer (Govt of AP)",
+        contact: "99664 04404",
+        email: "nvenkataramanareddy@gmail.com",
+        role: "Advisor",
+        image: "/images/governingbody/NV ramana reddy.jpg"
+    },
+    {
+        name: "Dr. B.V Ramana",
+        batch: "1988-1995",
+        profession: "Doctor (Pediatrician)",
+        contact: "90521 84844",
+        email: "drbvr78@gmail.com",
+        role: "Advisor",
+        image: "/images/governingbody/BVRamana.jpg"
+    }
+];
