@@ -1,6 +1,12 @@
+"use client";
+
 import Link from "next/link";
+import { useAuth } from "@/context/AuthContext";
 
 export default function Footer() {
+    const { user, loading } = useAuth();
+    const shouldShowAuthLinks = !loading && !user;
+
     return (
         <footer className="w-full border-t border-neutral-200 bg-white">
             <div className="mx-auto max-w-6xl px-4 sm:px-6 py-8 grid gap-6 sm:grid-cols-4">
@@ -17,13 +23,15 @@ export default function Footer() {
                         <li><Link className="hover:text-[#138808]" href="/contact">Contact</Link></li>
                     </ul>
                 </div>
-                <div className="text-sm">
-                    <p className="font-semibold mb-2 text-[#FF9933]">Get Involved</p>
-                    <ul className="space-y-1 text-neutral-700">
-                        <li><Link className="hover:text-[#138808]" href="/auth/login">Login</Link></li>
-                        <li><Link className="hover:text-[#138808]" href="/auth/register">Register</Link></li>
-                    </ul>
-                </div>
+                {shouldShowAuthLinks && (
+                    <div className="text-sm">
+                        <p className="font-semibold mb-2 text-[#FF9933]">Get Involved</p>
+                        <ul className="space-y-1 text-neutral-700">
+                            <li><Link className="hover:text-[#138808]" href="/auth/login">Login</Link></li>
+                            <li><Link className="hover:text-[#138808]" href="/auth/register">Register</Link></li>
+                        </ul>
+                    </div>
+                )}
                 <div className="text-sm">
                     <p className="font-semibold mb-2 text-[#FF9933]">Follow Us</p>
                     <div className="flex items-center gap-3">

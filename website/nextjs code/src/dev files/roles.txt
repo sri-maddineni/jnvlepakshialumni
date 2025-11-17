@@ -1,0 +1,55 @@
+1. user (public) who doesnt even registered
+he cant see alumni 
+he can jsut visit site
+
+if wanted to register, he can register with reg fee or without reg fee
+
+
+
+
+2. Alumni → already registered
+
+once already registered
+
+verified or not verified (✓ / ✗)
+
+which can view all other alumni profiles (not content editable),
+can see email only not contact phone number only if approved!
+
+approved
+
+verified/unverified
+
+
+For now keep it approval
+
+Admin → approve (crossed word)
+
+Has an doubt
+
+
+
+3. Alumni verification committee
+i) He is an admin only (all permissions of role 2)
+ii) He can approve other pending profiles
+
+
+4. Governing body
+i) He is an admin
+ii) He is alumni verification committee
+iii) He can also deactivate an account
+iv) Profile created initially, to be approved by admin(s)
+
+
+5. Admin
+governing body + actions on governing body!
+
+Can create posts
+can approve posts 
+
+Full control on website
+
+
+6. Treasurer — all transaction details
+
+role 2 + role 3 (content and guidelines) modulation

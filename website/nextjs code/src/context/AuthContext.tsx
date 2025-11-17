@@ -12,7 +12,7 @@ import {
     sendPasswordResetEmail
 } from "firebase/auth";
 import { Roles } from "@/app/database/Enums";
-import { getAlumniByUid, AlumniRecord } from "@/app/database/dbops";
+import { getAlumniByUid, AlumniRecord, updateAlumni } from "@/app/database/dbops";
 // import { AlumniStatus } from "@/app/database/Enums";
 
 type UserRole = Roles | null;
@@ -45,6 +45,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                     // Fetch alumni record to get role and status
                     const alumni = await getAlumniByUid(firebaseUser.uid);
                     if (alumni) {
+                        const googlePhoto = firebaseUser.photoURL;
+                        if (googlePhoto && googlePhoto !== alumni.photoUrl) {
+                            try {
+                                await updateAlumni(firebaseUser.uid, { photoUrl: googlePhoto });
+                                alumni.photoUrl = googlePhoto;
+                            } catch (photoErr) {
+                                console.error("Failed to sync Google photo URL:", photoErr);
+                            }
+                        }
                         setAlumniData(alumni);
                         // Determine user role based on alumni record
                         // Use userRole field if exists, otherwise default to User

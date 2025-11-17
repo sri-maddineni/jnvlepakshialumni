@@ -210,9 +210,18 @@ export default function ProfilePage() {
                 {/* Profile Header Card */}
                 <div className="lg:col-span-3 rounded-2xl border border-neutral-200 bg-white p-6">
                     <div className="flex items-center gap-6">
-                        <div className="h-24 w-24 rounded-full bg-gradient-to-br from-[#FF9933]/20 to-[#138808]/20 flex items-center justify-center text-neutral-700 font-semibold text-2xl">
-                            {getInitials(alumniData.fullName)}
-                        </div>
+                        {alumniData.photoUrl ? (
+                            <img
+                                src={alumniData.photoUrl}
+                                alt={`${alumniData.fullName} profile photo`}
+                                referrerPolicy="no-referrer"
+                                className="h-24 w-24 rounded-full object-cover border-4 border-white shadow-md"
+                            />
+                        ) : (
+                            <div className="h-24 w-24 rounded-full bg-gradient-to-br from-[#FF9933]/20 to-[#138808]/20 flex items-center justify-center text-neutral-700 font-semibold text-2xl">
+                                {getInitials(alumniData.fullName)}
+                            </div>
+                        )}
                         <div className="flex-1">
                             <h2 className="text-2xl font-bold text-neutral-900">{alumniData.fullName}</h2>
                             <p className="text-neutral-600 mt-1">{alumniData.email}</p>

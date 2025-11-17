@@ -25,3 +25,18 @@ account number dadn details are
 ifsc code UBIN0802026
 HINDUPUR MAIN BAZAR BRANCH, ANANTHAPUR, 525201
  ask if any doubts
+
+
+
+at the top of alumni page, i want 3 colums, title, Total Registered
+
+12
+
+Verified Alumni
+
+12
+
+Pending Approval
+
+0, and signedin meber status
+to optimise space

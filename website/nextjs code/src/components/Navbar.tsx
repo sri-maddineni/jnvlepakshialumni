@@ -12,6 +12,14 @@ export default function Navbar() {
     const router = useRouter();
     const pathname = usePathname();
     const showBack = pathname !== "/";
+    const handleSignOut = async () => {
+        await signOutUser();
+        router.push("/");
+    };
+    const handleMobileSignOut = async () => {
+        setOpen(false);
+        await handleSignOut();
+    };
 
     return (
         <header className="w-full border-b border-neutral-200 bg-white/80 backdrop-blur sticky top-0 z-50">
@@ -60,7 +68,7 @@ export default function Navbar() {
                             <>
                                 <li><Link className="hover:text-[#FF9933]" href="/profile">Profile</Link></li>
                                 <li>
-                                    <button onClick={signOutUser} className="rounded bg-[#138808] text-white px-3 py-1.5 hover:opacity-90">Sign out</button>
+                                    <button onClick={handleSignOut} className="rounded bg-[#138808] text-white px-3 py-1.5 hover:opacity-90">Sign out</button>
                                 </li>
                             </>
                         )}
@@ -86,7 +94,9 @@ export default function Navbar() {
                             <>
                                 <li><Link className="text-neutral-800" href="/profile" onClick={() => setOpen(false)}>Profile</Link></li>
                                 <li>
-                                    <button onClick={() => { setOpen(false); void signOutUser(); }} className="rounded bg-[#138808] text-white px-3 py-1.5">Sign out</button>
+                                    <button onClick={handleMobileSignOut} className="rounded bg-[#138808] text-white px-3 py-1.5">
+                                        Sign out
+                                    </button>
                                 </li>
                             </>
                         )}

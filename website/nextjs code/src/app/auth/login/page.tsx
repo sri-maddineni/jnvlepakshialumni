@@ -26,7 +26,7 @@ export default function LoginPage() {
   // Redirect if already logged in
   useEffect(() => {
     if (!loading && user) {
-      router.push("/");
+      router.push("/profile");
     }
   }, [user, loading, router]);
 
@@ -54,7 +54,7 @@ export default function LoginPage() {
         await signOutUser();
       }
       await signInWithEmail(email, password);
-      router.push("/");
+      router.push("/profile");
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : "Login failed";
       setError(message);
@@ -91,7 +91,7 @@ export default function LoginPage() {
           await deleteDoc(oldDocRef);
         }
       }
-      router.push("/");
+      router.push("/profile");
     } catch (err) {
       const error = err as AuthError & { customData?: { email?: string } };
       const code = error.code;

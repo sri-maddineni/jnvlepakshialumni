@@ -8,8 +8,9 @@ export enum Roles {
     Alumni = "alumni",
     Governing_body = "governingbody",
     Admin = "admin",
-    Teacher = "teacher",
+    Treasurer = "treasurer",
     User = "user",
+    Verification_committee = "verificationcommittee"
 }
 
 

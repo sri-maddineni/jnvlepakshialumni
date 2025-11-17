@@ -153,7 +153,7 @@ const members: Member[] = [
     {
         name: "Vinod Kumar K",
         batch: "1991-1996",
-        profession: "Technical Lead (Data Engineer)",
+        profession: "Technical Lead (Data Engineer - Snowflake)",
         contact: "9494432923",
         email: "kwinodkumar2020@gmail.com",
         role: "VICE PRESIDENT",

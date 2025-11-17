@@ -29,6 +29,7 @@ export type AlumniRecord = {
     role: AlumniRole;
     userRole?: Roles; // Admin, Governing_body, etc. - optional, defaults to Alumni
     fullName: string;
+    photoUrl?: string;
     joinedYear: number;
     passedOutYear: number;
     joinedClass: string;

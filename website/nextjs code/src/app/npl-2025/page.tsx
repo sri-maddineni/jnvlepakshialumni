@@ -63,7 +63,7 @@ export default function Npl2025Page() {
                 </div>
 
                 {/* Advisory Body Section */}
-                {members.length > 0 && (
+                {npl_members.length > 0 && (
                     <section className="mt-6 sm:mt-10">
                         <div className="text-center mb-8 sm:mb-10">
                             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">
@@ -72,7 +72,7 @@ export default function Npl2025Page() {
                             <div className="w-24 h-1 bg-gradient-to-r from-[#FF9933] to-[#138808] mx-auto rounded-full"></div>
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 max-w-6xl mx-auto">
-                            {members.map((m) => (
+                            {npl_members.map((m) => (
                                 <div
                                     key={m.name + m.role}
                                     className="group rounded-2xl border border-neutral-200/60 bg-gradient-to-br from-white to-neutral-50/50 p-6 h-full flex flex-col shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-[#138808]/30"
@@ -123,6 +123,108 @@ export default function Npl2025Page() {
     );
 }
 
+const npl_members: Member[] = [
+    {
+        name: "VINOD KUMAR K",
+        role: "Chairperson",
+        profession: "Technical Lead (Data Engineer - Snowflake)",
+        batch: "1991-1996",
+        contact: "94944 32923",
+        image: "/images/governingbody/vinod_npl.jpg",
+        email: "kwinodkumar2020@gmail.com"
+    },
+    {
+        name: "C MARUTHI",
+        role: "General Secretary",
+        profession: "Army URC Officer",
+        batch: "1987-1994",
+        contact: "7013780261",
+        image: "/images/npl/maruthi.jpg",
+        email: "chinar20075@gmail.com"
+    },
+    {
+        name: "P G K K REDDY",
+        role: "Tournament Director",
+        profession: "Assistant Vice President",
+        batch: "1991-1998",
+        contact: "8008822664",
+        image: "/images/npl/pgkkreddy.jpg",
+        email: "kkreddy.jnvl91@gmail.com"
+    },
+    {
+        name: "M LAKSHMI NARAYANA REDDY",
+        role: "Treasurer (Finance & Revenue)",
+        profession: "Civil Contractor",
+        batch: "1993-2000",
+        contact: "9000306600",
+        image: "",
+        email: "mlnreddy9990@gmail.com"
+    },
+    {
+        name: "K LAKSHMI NARAYANA RAO",
+        role: "Treasurer (Expenses & Audit)",
+        profession: "Software Professional",
+        batch: "1993-2000",
+        contact: "+919052443627",
+        image: "",
+        email: "klnrao007@gmail.com"
+    },
+    {
+        name: "I RAMAKRISHNA NAIK",
+        role: "Player & Alumni Coordinator",
+        profession: "",
+        batch: "",
+        contact: "",
+        image: "/images/npl/rama.jpg",
+        email: ""
+    },
+    {
+        name: "M. CHANDRA SHEKAR",
+        role: "Coordinator & Media Head",
+        profession: "",
+        batch: "",
+        contact: "",
+        image: "",
+        email: ""
+    },
+    {
+        name: "Y GANGADRI",
+        role: "Executive Member",
+        profession: "Physical Director",
+        batch: "1996-2003",
+        contact: "9000033893",
+        image: "/images/governingbody/gangadri.jpg",
+        email: "gangs.ekalavya@gmail.com"
+    },
+    {
+        name: "OMPRATHAP REDDY",
+        role: "Executive Member",
+        profession: "",
+        batch: "",
+        contact: "",
+        image: "",
+        email: ""
+    },
+    {
+        name: "P SIVA KUMAR",
+        role: "Executive Member",
+        profession: "",
+        batch: "",
+        contact: "",
+        image: "/images/governingbody/siva.jpg",
+        email: ""
+    },
+    {
+        name: "SOMANATHAM CHAITRAHAS",
+        role: "Executive Member",
+        profession: "Software Engineer",
+        batch: "2011-2016",
+        contact: "8125705877",
+        image: "/images/governingbody/chaitrahas.jpg",
+        email: "coolchaitrahas@gmail.com"
+    }
+];
+
 
 type Member = {
     name: string;
@@ -136,95 +238,114 @@ type Member = {
 };
 
 
-const members: Member[] = [
-    // {
-    //     name: "N V Ramana Reddy",
-    //     batch: "1987-1994",
-    //     profession: "Labour Officer (Govt of AP)",
-    //     contact: "99664 04404",
-    //     email: "nvenkataramanareddy@gmail.com"
-    // },
+// const members: Member[] = [
+//     // {
+//     //     name: "N V Ramana Reddy",
+//     //     batch: "1987-1994",
+//     //     profession: "Labour Officer (Govt of AP)",
+//     //     contact: "99664 04404",
+//     //     email: "nvenkataramanareddy@gmail.com"
+//     // },
 
 
-    {
-        name: "Vinod Kumar K",
-        batch: "1991-1996",
-        profession: "Technical Lead (Data Engineer)",
-        contact: "9494432923",
-        email: "kwinodkumar2020@gmail.com",
-        role: "CHAIRMAN (NPL)",
-        image: "/images/governingbody/vinod.jpg"
-    },
-    // {
-    //     name: "G.REYAZ",
-    //     batch: "1991-1998",
-    //     profession: "PANCHAYAT RAJ DEPARTMENT — ZPHS, M.B.PALLI (Record Assistant)",
-    //     contact: "9885892798",
-    //     email: "g.reyaz10051981@gmail.com",
-    //     role: "JOINT SECRETARY - I",
-    //     image: "/images/governingbody/reyaz.jpg"
-    // },
-    // {
-    //     name: "D Sreenivasa Reddy",
-    //     batch: "1995-2002",
-    //     profession: "GST Officer",
-    //     contact: "9985309646",
-    //     email: "dsreddy138@gmail.com",
-    //     role: "TREASURER",
-    //     image: "/images/governingbody/srinivasa reddy.jpg"
-    // },
-    // {
-    //     name: "Y GANGADRI",
-    //     batch: "1996-2003",
-    //     profession: "Physical Director",
-    //     contact: "9000033893",
-    //     email: "gangs.ekalavya@gmail.com",
-    //     role: "ASSOCIATE PRESIDENT - I",
-    //     image: "/images/governingbody/gangadri.jpg"
-    // },
-    // {
-    //     name: "M V Balaji",
-    //     batch: "1990-1997",
-    //     profession: "AGM in BSNL",
-    //     contact: "9491985899",
-    //     email: "balajimv404@gmail.com",
-    //     role: "JOINT SECRETARY - II",
-    //     image: "/images/governingbody/balaji.jpg"
-    // },
-    // {
-    //     name: "S SUMATHI",
-    //     contact: "96712 66999",
-    //     role: "ASSOCIATE PRESIDENT - II",
-    //     image: "/images/governingbody/sumathi.jpg"
-    // },
-    // {
-    //     name: "Siva Kumar P",
-    //     batch: "2006-2013",
-    //     profession: "Product Manager (Healthcare IT)",
-    //     contact: "9703905818",
-    //     email: "pullasivakumar28@gmail.com",
-    //     role: "EXECUTIVE COMMITTEE - I",
-    //     image: "/images/governingbody/siva.jpg"
-    // },
-    // {
-    //     name: "S Chaitrahas",
-    //     batch: "2011-2016",
-    //     profession: "Software Engineer",
-    //     contact: "8125705877",
-    //     email: "coolchaitrahas@gmail.com",
-    //     role: "EXECUTIVE COMMITTEE - II",
-    //     image: "/images/governingbody/chaitrahas.jpg"
-    // },
-    // {
-    //     name: "H. Arunamma",
-    //     batch: "1998-2005",
-    //     profession: "APSRTC Conductor",
-    //     contact: "9392097358",
-    //     email: "shresta.srujan@gmail.com",
-    //     role: "EXECUTIVE COMMITTEE - III",
-    //     image: "/images/governingbody/arunamma.jpg"
-    // },
-];
+//     {
+//         name: "Vinod Kumar K",
+//         batch: "1991-1996",
+//         profession: "Technical Lead (Data Engineer)",
+//         contact: "9494432923",
+//         email: "kwinodkumar2020@gmail.com",
+//         role: "CHAIRMAN (NPL)",
+//         image: "/images/governingbody/vinod_npl.jpg"
+//     },
+//     {
+//         name: "Y Omprathap reddy ",
+//         batch: "2005-2012",
+//         profession: "HDB finance",
+//         contact: "9160565616",
+//         email: "565616prathap@gmail.com",
+//         role: "CHAIRMAN (NPL)",
+//         image: "/images/governingbody/vinod_npl.jpg"
+//     },
+
+
+
+
+
+
+
+
+//     // {
+//     //     name: "G.REYAZ",
+//     //     batch: "1991-1998",
+//     //     profession: "PANCHAYAT RAJ DEPARTMENT — ZPHS, M.B.PALLI (Record Assistant)",
+//     //     contact: "9885892798",
+//     //     email: "g.reyaz10051981@gmail.com",
+//     //     role: "JOINT SECRETARY - I",
+//     //     image: "/images/governingbody/reyaz.jpg"
+//     // },
+//     // {
+//     //     name: "D Sreenivasa Reddy",
+//     //     batch: "1995-2002",
+//     //     profession: "GST Officer",
+//     //     contact: "9985309646",
+//     //     email: "dsreddy138@gmail.com",
+//     //     role: "TREASURER",
+//     //     image: "/images/governingbody/srinivasa reddy.jpg"
+//     // },
+//     // {
+//     //     name: "Y GANGADRI",
+//     //     batch: "1996-2003",
+//     //     profession: "Physical Director",
+//     //     contact: "9000033893",
+//     //     email: "gangs.ekalavya@gmail.com",
+//     //     role: "ASSOCIATE PRESIDENT - I",
+//     //     image: "/images/governingbody/gangadri.jpg"
+//     // },
+//     // {
+//     //     name: "M V Balaji",
+//     //     batch: "1990-1997",
+//     //     profession: "AGM in BSNL",
+//     //     contact: "9491985899",
+//     //     email: "balajimv404@gmail.com",
+//     //     role: "JOINT SECRETARY - II",
+//     //     image: "/images/governingbody/balaji.jpg"
+//     // },
+//     // {
+//     //     name: "S SUMATHI",
+//     //     contact: "96712 66999",
+//     //     role: "ASSOCIATE PRESIDENT - II",
+//     //     image: "/images/governingbody/sumathi.jpg"
+//     // },
+//     // {
+//     //     name: "Siva Kumar P",
+//     //     batch: "2006-2013",
+//     //     profession: "Product Manager (Healthcare IT)",
+//     //     contact: "9703905818",
+//     //     email: "pullasivakumar28@gmail.com",
+//     //     role: "EXECUTIVE COMMITTEE - I",
+//     //     image: "/images/governingbody/siva.jpg"
+//     // },
+//     // {
+//     //     name: "S Chaitrahas",
+//     //     batch: "2011-2016",
+//     //     profession: "Software Engineer",
+//     //     contact: "8125705877",
+//     //     email: "coolchaitrahas@gmail.com",
+//     //     role: "EXECUTIVE COMMITTEE - II",
+//     //     image: "/images/governingbody/chaitrahas.jpg"
+//     // },
+//     // {
+//     //     name: "H. Arunamma",
+//     //     batch: "1998-2005",
+//     //     profession: "APSRTC Conductor",
+//     //     contact: "9392097358",
+//     //     email: "shresta.srujan@gmail.com",
+//     //     role: "EXECUTIVE COMMITTEE - III",
+//     //     image: "/images/governingbody/arunamma.jpg"
+//     // },
+// ];
+
+
 function getInitials(name: string) {
     const parts = name.split(" ").filter(Boolean);
     const first = parts[0]?.[0] ?? "";
