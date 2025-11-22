@@ -84,6 +84,7 @@ export default function Navbar() {
                         <li><Link className="text-neutral-800" href="/about" onClick={() => setOpen(false)}>About</Link></li>
                         <li><Link className="text-neutral-800" href="/alumni" onClick={() => setOpen(false)}>Alumni</Link></li>
                         <li><Link className="text-neutral-800" href="/contact" onClick={() => setOpen(false)}>Contact</Link></li>
+                        <li><Link className="text-neutral-800" href="/gallery" onClick={() => setOpen(false)}>Gallery</Link></li>
                         {!user && (
                             <>
                                 <li><Link className="text-neutral-800" href="/auth/login" onClick={() => setOpen(false)}>Login</Link></li>
